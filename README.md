@@ -1,2 +1,2 @@
 # projects
-This is where i will store all of my side projects
+This is where I store all of my side projects
