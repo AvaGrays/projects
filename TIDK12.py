@@ -1,3 +1,4 @@
+
 import pygame
 import random
 import pygame.locals
@@ -146,7 +147,7 @@ while playing:
                     print("I'm working")
                     print(fill[0], fill[len(fill)-1])
                     pygame.draw.polygon(w, color, fill)
-                    smoothing.smooth(fill, 0)
+                    smoothing.smooth(fill, 10)
                     pygame.display.flip()
                     fill=[]    
                     print("is it empty" + str(fill) )
@@ -161,7 +162,7 @@ while playing:
             fill_point = pygame.mouse.get_pos()
             #print(str(fill_point))
             fill_point = pygame.mouse.get_pos()
-           
+            
             fill.append(fill_point)
 
         
@@ -175,4 +176,4 @@ while playing:
         if event.type == pygame.QUIT:
             playing = False
     
-        C.tick(60)
+        C.tick(200)
