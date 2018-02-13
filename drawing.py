@@ -7,12 +7,24 @@ import smoothing
 
 
 pygame.init()
+icon = pygame.image.load('brushes.png')
+pygame.display.set_icon(icon)
+pygame.display.set_caption('Drawing Studio')
 
 C=pygame.time.Clock()
 
-w=pygame.display.set_mode(([900,900]))
+x_1=900
+y_1=900
+
+w=pygame.display.set_mode(([x_1,y_1]))
 w.fill((255, 255, 255))
 pygame.display.flip()
+
+border = False
+
+a = 0
+
+change_window = False
 
 w.fill((255,255,255))
 
@@ -26,19 +38,9 @@ color=((0, 0, 0))
 pos_x=10
 pos_y=10
 
-x=0
-y=0
-
 bk=((0,0,0))
 
-
-#doc_size=int(input("How big do you want your screen, use commas: "))
-
-#doc_size2=doc_size.split(",")
-
-#print(doc_size2)
-
-w=pygame.display.set_mode((900, 900))
+#w=pygame.display.set_mode((900, 900))
 
 tools=pygame.Rect(0, 0, 900, 40)
 fill=[]
@@ -53,7 +55,40 @@ drawing=False
 
 
 playing=True
-while playing:  
+while playing:
+
+     
+
+    """      
+    x, y = pygame.mouse.get_pos()
+
+    #dragging
+    if border:
+        x_1=x+difx
+        y_1=y+dify
+        window=pygame.display.set_mode([x_1, y_1])
+        window.fill((255, 255, 255)) #Here, you have to re-draw everything
+        
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            drawing=False
+
+        #if the right/bottom edges of the screen are pressed
+        if event.type==pygame.MOUSEBUTTONDOWN and (x_1-x<=20 or y_1-y<=20):
+            difx=x_1-x
+            dify=y_1-y
+            border=True
+
+        #if you unpress the mouse
+        if event.type==pygame.MOUSEBUTTONUP and change_window:
+            change_window=False
+            border=False
+        #to fix the bug
+        elif event.type==pygame.MOUSEBUTTONUP and change_window==False and border:
+            change_window=True
+            
+    pygame.display.flip()
+    """
    
     
     
@@ -120,7 +155,7 @@ while playing:
             
         #drawing the line w/ unlimited success             
         if event.type == pygame.MOUSEBUTTONDOWN:
-        
+            
             x1,y1 = pygame.mouse.get_pos()
             x2,y2 = pygame.mouse.get_pos()           
             
@@ -176,4 +211,4 @@ while playing:
         if event.type == pygame.QUIT:
             playing = False
     
-        C.tick(200)
+        C.tick(60)
